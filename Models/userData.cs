@@ -30,7 +30,7 @@ namespace Team_1_Project.Models
         }
         [Required]
         [Phone]
-        [Display(Name = "Phone Number")]
+        [Display(Name = "Number")]
         public string phoneNumber { get; set; }
 
         [Required]
