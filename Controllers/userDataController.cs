@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -51,9 +52,19 @@ namespace Team_1_Project.Controllers
         {
             if (ModelState.IsValid)
             {
-                userData.ID = Guid.NewGuid();
+                Guid memberID;
+                Guid.TryParse(User.Identity.GetUserId(), out memberID);
+                userData.ID = memberID;
+                //userData.ID = Guid.NewGuid();
                 db.userData.Add(userData);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    return View("duplicateUser");
+                }
                 return RedirectToAction("Index");
             }
 
