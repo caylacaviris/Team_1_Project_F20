@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\coreValuesRecognitionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\userDataController.cs" />
@@ -175,6 +176,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Team1Project\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -245,6 +247,11 @@
     <Content Include="Views\userData\Edit.cshtml" />
     <Content Include="Views\userData\Index.cshtml" />
     <Content Include="Views\userData\duplicateUser.cshtml" />
+    <Content Include="Views\coreValuesRecognitions\Create.cshtml" />
+    <Content Include="Views\coreValuesRecognitions\Delete.cshtml" />
+    <Content Include="Views\coreValuesRecognitions\Details.cshtml" />
+    <Content Include="Views\coreValuesRecognitions\Edit.cshtml" />
+    <Content Include="Views\coreValuesRecognitions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

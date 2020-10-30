@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -11,13 +12,17 @@ namespace Team_1_Project.Models
         public int ID { get; set; }
         
         [Display(Name = "Core Value Recognized")]
-        public CoreValue award { get; set; }
+        public CoreValues award { get; set; }
 
         [Display(Name = "ID of Person Giving the Recognition")]
-        public GUID recognizor { get; set; }
+        public Guid recognizorID { get; set; }
+        [ForeignKey ("recognizorID")]
+        public virtual userData recognizor { get; set; }
 
         [Display(Name = "ID of Person Receiving the Recognition")]
-        public GUID recognized { get; set; }
+        public Guid recognizedID { get; set; }
+        [ForeignKey ("recognizedID")]
+        public virtual userData recognized { get; set; }
 
         [Display(Name = "Date Recognition Given")]
         public DateTime recognizationDate { get; set; }
