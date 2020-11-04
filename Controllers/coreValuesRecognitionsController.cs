@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using Team_1_Project.DAL;
@@ -133,5 +135,18 @@ namespace Team_1_Project.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult SendEmail() {
+
+            return View();
+
+          
+
+        }
+
+        
+ 
+        
     }
+
 }
