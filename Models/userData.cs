@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -47,5 +48,12 @@ namespace Team_1_Project.Models
         [Display(Name = "Hire Date")]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime hireDate { get; set; }
+
+        [ForeignKey("recognizedID")]
+        public ICollection<coreValuesRecognition> recognizee { get; set; }
+
+        [ForeignKey("recognizorID")]
+
+        public ICollection<coreValuesRecognition> recognizer { get; set; }
     }
 }
