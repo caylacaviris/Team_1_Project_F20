@@ -23,9 +23,13 @@ namespace Team_1_Project.Models
         public Guid recognizedID { get; set; }
         [ForeignKey ("recognizedID")]
         public virtual userData recognized { get; set; }
-
+        
         [Display(Name = "Date Recognition Given")]
         public DateTime recognizationDate { get; set; }
+
+       
+
+   
 
         public enum CoreValues
         {

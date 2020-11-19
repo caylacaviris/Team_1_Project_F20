@@ -16,10 +16,11 @@ namespace Team_1_Project.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();  // note: this is all one line!
+            base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<userData> userData { get; set; }
 
-        public System.Data.Entity.DbSet<Team_1_Project.Models.coreValuesRecognition> coreValuesRecognitions { get; set; }
+        public DbSet<coreValuesRecognition> coreValuesRecognitions { get; set; }
     }
 }

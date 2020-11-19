@@ -44,6 +44,7 @@ namespace Team_1_Project.Controllers
         {
             ViewBag.recognizedID = new SelectList(db.userData, "ID", "fullName");
             ViewBag.recognizorID = new SelectList(db.userData, "ID", "fullName");
+
             return View();
         }
 
@@ -58,6 +59,50 @@ namespace Team_1_Project.Controllers
             {
                 db.coreValuesRecognitions.Add(coreValuesRecognition);
                 db.SaveChanges();
+                var personRecognizee = db.userData.Find(coreValuesRecognition.recognizedID);
+                var email = personRecognizee.email;
+                var fullName = personRecognizee.fullName;
+                var personRecognizor = db.userData.Find(coreValuesRecognition.recognizorID);
+                var firstName = personRecognizor.firstName;
+                var lastName = personRecognizor.lastName;
+                var date = coreValuesRecognition.recognizationDate;
+
+                var msg = "Hi " + fullName + " , We wanted to congradulate you for receiving a recognition from " + firstName + " " + lastName + " on " + date + ".";
+                msg += "Have a great day ! " ;
+
+                MailMessage myMessage = new MailMessage();
+                MailAddress from = new MailAddress("kw355016@gmail.com", "CentricResponseTeam");
+                myMessage.From = from;
+                myMessage.To.Add(email);
+                myMessage.Subject = "Recognition Earned";
+                myMessage.Body = msg;
+
+                try
+                {
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new System.Net.NetworkCredential("Team1mis4200@gmail.com", "Testing123!");
+                    smtp.EnableSsl = true;
+                    // smtp.Send(myMessage);
+                    TempData["msg"] = msg;
+                    TempData["mailError"] = "";
+                    return View("mailError");
+                }
+                catch (Exception ex)
+                {
+                    TempData["mailError"] = ex.Message;
+                    return View("mailError");
+                }
+
+
+
+
+
+
+
+
                 return RedirectToAction("Index");
             }
 
@@ -65,6 +110,7 @@ namespace Team_1_Project.Controllers
             ViewBag.recognizorID = new SelectList(db.userData, "ID", "fullName", coreValuesRecognition.recognizorID);
             return View(coreValuesRecognition);
         }
+        
 
         // GET: coreValuesRecognitions/Edit/5
         public ActionResult Edit(int? id)
@@ -143,6 +189,7 @@ namespace Team_1_Project.Controllers
           
 
         }
+        
 
         
  
