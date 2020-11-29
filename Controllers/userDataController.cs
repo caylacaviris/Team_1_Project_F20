@@ -26,7 +26,7 @@ namespace Team_1_Project.Controllers
                u.lastName.Contains(searchString)
                || u.firstName.Contains(searchString));
                 //if here, users were found so view them
-                return View(db.userData.ToList());
+                return View(testusers.ToList());
             }
             return View(db.userData.ToList());
         }
