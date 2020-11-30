@@ -7,8 +7,10 @@ using System.Web;
 
 namespace Team_1_Project.Models
 {
-    public class userData
+    
+    public class  userData
     {
+       
 
         [Required]
         public Guid ID { get; set; }

@@ -15,6 +15,7 @@ namespace Team_1_Project.Controllers
     public class userDataController : Controller
     {
         private Team1ProjectContext db = new Team1ProjectContext();
+        private object id;
 
         // GET: userData
         public ActionResult Index(string searchString)
@@ -84,6 +85,7 @@ namespace Team_1_Project.Controllers
         }
 
         // GET: userData/Edit/5
+        [Authorize]
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
@@ -95,7 +97,18 @@ namespace Team_1_Project.Controllers
             {
                 return HttpNotFound();
             }
-            return View(userData);
+            Guid memberID;
+            Guid.TryParse(User.Identity.GetUserId(), out memberID);
+            if (userData.ID == memberID)
+            {
+                return View(userData);
+            }
+            else
+            {
+                return View("NotAuthenticated");
+            }
+
+
         }
 
         // POST: userData/Edit/5
@@ -105,16 +118,19 @@ namespace Team_1_Project.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,lastName,firstName,phoneNumber,email,officeLocation,position,hireDate")] userData userData)
         {
+
             if (ModelState.IsValid)
             {
-                db.Entry(userData).State = EntityState.Modified;
+               db.Entry(userData).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+               return RedirectToAction("Index");
             }
-            return View(userData);
+           return View(userData);
+
         }
 
         // GET: userData/Delete/5
+        [Authorize]
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
@@ -126,7 +142,16 @@ namespace Team_1_Project.Controllers
             {
                 return HttpNotFound();
             }
-            return View(userData);
+            Guid memberID;
+            Guid.TryParse(User.Identity.GetUserId(), out memberID);
+            if (userData.ID == memberID)
+            {
+                return View(userData);
+            }
+            else
+            {
+                return View("NotAuthenticated");
+            }
         }
 
         // POST: userData/Delete/5

@@ -8,6 +8,7 @@ namespace Team_1_Project.Models
 {
     public class peerRecognition
     {
+        
         public int ID { get; set; }
        
         [Display(Name = "ID of the Person giving the recognition")]
