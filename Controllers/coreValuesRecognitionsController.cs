@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -99,10 +100,6 @@ namespace Team_1_Project.Controllers
 
 
 
-
-
-
-
                 return RedirectToAction("Index");
             }
 
@@ -113,6 +110,7 @@ namespace Team_1_Project.Controllers
         
 
         // GET: coreValuesRecognitions/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -126,7 +124,17 @@ namespace Team_1_Project.Controllers
             }
             ViewBag.recognizedID = new SelectList(db.userData, "ID", "fullName", coreValuesRecognition.recognizedID);
             ViewBag.recognizorID = new SelectList(db.userData, "ID", "fullName", coreValuesRecognition.recognizorID);
-            return View(coreValuesRecognition);
+            Guid memberID;
+            Guid.TryParse(User.Identity.GetUserId(), out memberID);
+            if (coreValuesRecognition.recognizorID == memberID)
+            {
+                return View(coreValuesRecognition);
+            }
+            else
+            {
+                return View("NotAbleToEdit");
+            }
+
         }
 
         // POST: coreValuesRecognitions/Edit/5
@@ -148,6 +156,7 @@ namespace Team_1_Project.Controllers
         }
 
         // GET: coreValuesRecognitions/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -159,7 +168,17 @@ namespace Team_1_Project.Controllers
             {
                 return HttpNotFound();
             }
-            return View(coreValuesRecognition);
+            Guid memberID;
+            Guid.TryParse(User.Identity.GetUserId(), out memberID);
+            if (coreValuesRecognition.recognizorID == memberID)
+            {
+                return View(coreValuesRecognition);
+            }
+            else
+            {
+                return View("NotAbleToEdit");
+            }
+          
         }
 
         // POST: coreValuesRecognitions/Delete/5
