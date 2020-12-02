@@ -41,6 +41,7 @@ namespace Team_1_Project.Controllers
         }
 
         // GET: coreValuesRecognitions/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.recognizedID = new SelectList(db.userData, "ID", "fullName");
