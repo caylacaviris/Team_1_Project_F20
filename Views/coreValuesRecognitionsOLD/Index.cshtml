@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Team_1_Project.Models.coreValuesRecognition>
+
+@{
+    ViewBag.Title = "Recognition Index";
+}
+
+<h2>Recognition Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Recognized Name
+        </th>
+        <th>
+            Recognizor Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.award)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recognizationDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.recognized.fullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.recognizor.fullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.award)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.recognizationDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+

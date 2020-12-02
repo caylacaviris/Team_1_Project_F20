@@ -27,9 +27,10 @@ namespace Team_1_Project.Models
         [Display(Name = "Date Recognition Given")]
         public DateTime recognizationDate { get; set; }
 
-       
+       [Display(Name = "Would you like to recognize this employee for something else?")]
+        public string customRecognition { get; set; }
 
-   
+
 
         public enum CoreValues
         {
@@ -39,6 +40,8 @@ namespace Team_1_Project.Models
             Innovate = 4,
             Balance = 5
         }
+
+        
 
     }
 }

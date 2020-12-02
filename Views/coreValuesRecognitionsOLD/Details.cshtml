@@ -1,29 +1,29 @@
 ﻿@model Team_1_Project.Models.coreValuesRecognition
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Recognition Details";
 }
 
 <h2>Details</h2>
 
 <div>
-    <h4>coreValuesRecognition</h4>
+    <h4>Core Values Recognition</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.recognized.lastName)
+            Recognized Name
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.recognized.lastName)
+            @Html.DisplayFor(model => model.recognized.fullName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.recognizor.lastName)
+            Recognizor Name
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.recognizor.lastName)
+            @Html.DisplayFor(model => model.recognizor.fullName)
         </dd>
 
         <dt>
@@ -40,14 +40,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.recognizationDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.customRecognition)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.customRecognition)
         </dd>
 
     </dl>

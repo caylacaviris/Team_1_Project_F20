@@ -57,5 +57,8 @@ namespace Team_1_Project.Models
         [ForeignKey("recognizorID")]
 
         public ICollection<coreValuesRecognition> recognizer { get; set; }
+
+
+        
     }
 }

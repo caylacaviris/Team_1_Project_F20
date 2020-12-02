@@ -169,6 +169,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\coreValuesRecognitionsController.cs" />
+    <Compile Include="Controllers\coreValuesRecognitionsControllerOLD.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\userDataController.cs" />
@@ -248,14 +249,19 @@
     <Content Include="Views\userData\Edit.cshtml" />
     <Content Include="Views\userData\Index.cshtml" />
     <Content Include="Views\userData\duplicateUser.cshtml" />
+    <Content Include="Views\coreValuesRecognitionsOLD\Create.cshtml" />
+    <Content Include="Views\coreValuesRecognitionsOLD\Delete.cshtml" />
+    <Content Include="Views\coreValuesRecognitionsOLD\Details.cshtml" />
+    <Content Include="Views\coreValuesRecognitionsOLD\Edit.cshtml" />
+    <Content Include="Views\coreValuesRecognitionsOLD\Index.cshtml" />
+    <Content Include="Views\coreValuesRecognitionsOLD\mailError.cshtml" />
+    <Content Include="Views\userData\NotAuthenticated.cshtml" />
+    <Content Include="Views\coreValuesRecognitionsOLD\NotAbleToEdit.cshtml" />
     <Content Include="Views\coreValuesRecognitions\Create.cshtml" />
     <Content Include="Views\coreValuesRecognitions\Delete.cshtml" />
     <Content Include="Views\coreValuesRecognitions\Details.cshtml" />
     <Content Include="Views\coreValuesRecognitions\Edit.cshtml" />
     <Content Include="Views\coreValuesRecognitions\Index.cshtml" />
-    <Content Include="Views\coreValuesRecognitions\mailError.cshtml" />
-    <Content Include="Views\userData\NotAuthenticated.cshtml" />
-    <Content Include="Views\coreValuesRecognitions\NotAbleToEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

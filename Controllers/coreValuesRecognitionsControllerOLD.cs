@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using Team_1_Project.DAL;
@@ -13,7 +14,7 @@ using Team_1_Project.Models;
 
 namespace Team_1_Project.Controllers
 {
-    public class coreValuesRecognitionsController : Controller
+    public class coreValuesRecognitionsControllerOLD : Controller
     {
         private Team1ProjectContext db = new Team1ProjectContext();
 
@@ -45,6 +46,7 @@ namespace Team_1_Project.Controllers
         {
             ViewBag.recognizedID = new SelectList(db.userData, "ID", "fullName");
             ViewBag.recognizorID = new SelectList(db.userData, "ID", "fullName");
+
             return View();
         }
 
@@ -53,7 +55,7 @@ namespace Team_1_Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,award,recognizorID,recognizedID,recognizationDate,customRecognition")] coreValuesRecognition coreValuesRecognition)
+        public ActionResult Create([Bind(Include = "ID,award,recognizorID,recognizedID,recognizationDate")] coreValuesRecognition coreValuesRecognition)
         {
             if (ModelState.IsValid)
             {
@@ -66,10 +68,9 @@ namespace Team_1_Project.Controllers
                 var firstName = personRecognizor.firstName;
                 var lastName = personRecognizor.lastName;
                 var date = coreValuesRecognition.recognizationDate;
-                var customRecognition = coreValuesRecognition.customRecognition;
 
                 var msg = "Hi " + fullName + " , We wanted to congradulate you for receiving a recognition from " + firstName + " " + lastName + " on " + date + ".";
-                msg += "Have a great day ! ";
+                msg += "Have a great day ! " ;
 
                 MailMessage myMessage = new MailMessage();
                 MailAddress from = new MailAddress("kw355016@gmail.com", "CentricResponseTeam");
@@ -96,15 +97,18 @@ namespace Team_1_Project.Controllers
                     TempData["mailError"] = ex.Message;
                     return View("mailError");
                 }
-               
 
 
+
+
+                return RedirectToAction("Index");
             }
 
-            ViewBag.recognizedID = new SelectList(db.userData, "ID", "lastName", coreValuesRecognition.recognizedID);
-            ViewBag.recognizorID = new SelectList(db.userData, "ID", "lastName", coreValuesRecognition.recognizorID);
+            ViewBag.recognizedID = new SelectList(db.userData, "ID", "fullName", coreValuesRecognition.recognizedID);
+            ViewBag.recognizorID = new SelectList(db.userData, "ID", "fullName", coreValuesRecognition.recognizorID);
             return View(coreValuesRecognition);
         }
+        
 
         // GET: coreValuesRecognitions/Edit/5
         [Authorize]
@@ -131,7 +135,7 @@ namespace Team_1_Project.Controllers
             {
                 return View("NotAbleToEdit");
             }
-            
+
         }
 
         // POST: coreValuesRecognitions/Edit/5
@@ -139,7 +143,7 @@ namespace Team_1_Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,award,recognizorID,recognizedID,recognizationDate,customRecognition")] coreValuesRecognition coreValuesRecognition)
+        public ActionResult Edit([Bind(Include = "ID,award,recognizorID,recognizedID,recognizationDate")] coreValuesRecognition coreValuesRecognition)
         {
             if (ModelState.IsValid)
             {
@@ -147,8 +151,8 @@ namespace Team_1_Project.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.recognizedID = new SelectList(db.userData, "ID", "fullName", coreValuesRecognition.recognizedID);
-            ViewBag.recognizorID = new SelectList(db.userData, "ID", "fullName", coreValuesRecognition.recognizorID);
+            ViewBag.recognizedID = new SelectList(db.userData, "ID", "", coreValuesRecognition.recognizedID);
+            ViewBag.recognizorID = new SelectList(db.userData, "ID", "lastName", coreValuesRecognition.recognizorID);
             return View(coreValuesRecognition);
         }
 
@@ -175,7 +179,7 @@ namespace Team_1_Project.Controllers
             {
                 return View("NotAbleToEdit");
             }
-            
+          
         }
 
         // POST: coreValuesRecognitions/Delete/5
@@ -197,14 +201,19 @@ namespace Team_1_Project.Controllers
             }
             base.Dispose(disposing);
         }
-        public ActionResult SendEmail()
-        {
+
+        public ActionResult SendEmail() {
 
             return View();
 
-
+          
 
         }
+        
 
+        
+ 
+        
     }
+
 }
