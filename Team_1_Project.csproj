@@ -254,14 +254,16 @@
     <Content Include="Views\coreValuesRecognitionsOLD\Details.cshtml" />
     <Content Include="Views\coreValuesRecognitionsOLD\Edit.cshtml" />
     <Content Include="Views\coreValuesRecognitionsOLD\Index.cshtml" />
-    <Content Include="Views\coreValuesRecognitionsOLD\mailError.cshtml" />
+    <Content Include="Views\coreValuesRecognitionsOLD\mailErrorOld.cshtml" />
     <Content Include="Views\userData\NotAuthenticated.cshtml" />
-    <Content Include="Views\coreValuesRecognitionsOLD\NotAbleToEdit.cshtml" />
+    <Content Include="Views\coreValuesRecognitionsOLD\NotAbleToEditOld.cshtml" />
     <Content Include="Views\coreValuesRecognitions\Create.cshtml" />
     <Content Include="Views\coreValuesRecognitions\Delete.cshtml" />
     <Content Include="Views\coreValuesRecognitions\Details.cshtml" />
     <Content Include="Views\coreValuesRecognitions\Edit.cshtml" />
     <Content Include="Views\coreValuesRecognitions\Index.cshtml" />
+    <Content Include="Views\coreValuesRecognitions\mailError.cshtml" />
+    <Content Include="Views\coreValuesRecognitions\NotAbleToEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
