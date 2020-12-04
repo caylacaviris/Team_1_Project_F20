@@ -18,6 +18,7 @@ namespace Team_1_Project.Controllers
         private object id;
 
         // GET: userData
+        [Authorize]
         public ActionResult Index(string searchString)
         {
             var testusers = from u in db.userData select u;
