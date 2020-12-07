@@ -18,6 +18,7 @@ namespace Team_1_Project.Controllers
         private Team1ProjectContext db = new Team1ProjectContext();
 
         // GET: coreValuesRecognitions
+        [Authorize]
         public ActionResult Index()
         {
             var coreValuesRecognitions = db.coreValuesRecognitions.Include(c => c.recognized).Include(c => c.recognizor);
