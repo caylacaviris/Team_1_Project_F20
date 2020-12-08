@@ -70,6 +70,22 @@
                 @Html.ActionLink("Details", "Details", new { id = item.ID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ID })
             </td>
+
+         
+        </tr>
+        <tr>
+            
+            <td>&nbsp;</td>
+            <td colspan="7">
+
+                @{ var ID = item.ID; ;
+                    Team_1_Project.DAL.Team1ProjectContext db = new Team_1_Project.DAL.Team1ProjectContext();
+                    var recognitions = db.coreValuesRecognitions.Where(c => c.recognizedID == ID);
+
+                }
+                @Html.Partial("_recognitionlist", recognitions)
+
+            </td>
         </tr>
     }
 

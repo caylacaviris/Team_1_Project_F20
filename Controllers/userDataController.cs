@@ -48,6 +48,24 @@ namespace Team_1_Project.Controllers
             {
                 return HttpNotFound();
             }
+            var rec = db.coreValuesRecognitions.Where(r => r.recognizedID == id );
+            var reclist = rec.ToList();
+            ViewBag.rec = reclist;
+            var totalcnt = reclist.Count();
+            var rec1Cnt = reclist.Where(r => r.award == coreValuesRecognition.CoreValues.Excellence).Count();
+            var rec2Cnt = reclist.Count(r => r.award == coreValuesRecognition.CoreValues.Integrity);
+            var rec3Cnt = reclist.Count(r => r.award == coreValuesRecognition.CoreValues.Stewardship);
+            var rec4Cnt = reclist.Count(r => r.award == coreValuesRecognition.CoreValues.Innovate);
+            var rec5Cnt = reclist.Count(r => r.award == coreValuesRecognition.CoreValues.Balance);
+
+
+            ViewBag.total = totalcnt;
+            ViewBag.Excellence = rec1Cnt;
+            ViewBag.Integrity = rec2Cnt;
+            ViewBag.Stewardship = rec3Cnt;
+            ViewBag.Innovate = rec4Cnt;
+            ViewBag.Balance = rec5Cnt;
+
             return View(userData);
         }
 
