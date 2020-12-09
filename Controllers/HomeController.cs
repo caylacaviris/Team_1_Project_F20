@@ -26,5 +26,11 @@ namespace Team_1_Project.Controllers
 
             return View();
         }
+        
+        public ActionResult SocialMedia()
+        {
+            ViewBag.Message = "Centric Social Media";
+            return View();
+        }
     }
 }
