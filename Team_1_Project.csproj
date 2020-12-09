@@ -264,7 +264,7 @@
     <Content Include="Views\coreValuesRecognitions\Index.cshtml" />
     <Content Include="Views\coreValuesRecognitions\mailError.cshtml" />
     <Content Include="Views\coreValuesRecognitions\NotAbleToEdit.cshtml" />
-    <Content Include="Views\userData\_coreValuesRecognition.cshtml" />
+    <Content Include="Views\userData\_recognitionlist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

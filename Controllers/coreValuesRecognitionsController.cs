@@ -16,6 +16,9 @@ namespace Team_1_Project.Controllers
     public class coreValuesRecognitionsController : Controller
     {
         private Team1ProjectContext db = new Team1ProjectContext();
+        private Guid id;
+        private object recList;
+
 
         // GET: coreValuesRecognitions
         [Authorize]
@@ -23,11 +26,13 @@ namespace Team_1_Project.Controllers
         {
             var coreValuesRecognitions = db.coreValuesRecognitions.Include(c => c.recognized).Include(c => c.recognizor);
             return View(coreValuesRecognitions.ToList());
+
         }
 
         // GET: coreValuesRecognitions/Details/5
         public ActionResult Details(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -38,6 +43,8 @@ namespace Team_1_Project.Controllers
                 return HttpNotFound();
             }
             return View(coreValuesRecognition);
+         
+         
         }
 
         // GET: coreValuesRecognitions/Create
@@ -206,6 +213,15 @@ namespace Team_1_Project.Controllers
 
 
         }
+        //var rec = db.coreValuesRecognitions.Where(r => r.recognizedID == id);
+           // ViewBag.rec = recList.ToList();
+
+           // var totalcnt = recList.Count();
+           // ViewBag.total = totalcnt;
+
+           // @Html.Partial("recognitioncount", coreValuesRecognition);
+           // var total = ViewBag.total;
+           //<h2>Total recognitions received = @total</h2>
 
     }
 }

@@ -7,7 +7,7 @@
 <h2>User Details</h2>
 
 <div>
-    
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -65,9 +65,77 @@
         <dd>
             @Html.DisplayFor(model => model.hireDate)
         </dd>
+        @*<dt>
+            @{ var total = ViewBag.total;
+
+            }
+            
+        </dt>
+        <dd>
+            Total recognitions received = @total
+        </dd>*@
 
     </dl>
 </div>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @{ var total = ViewBag.total;}
+            Total recognitions received = @total
+        </th>
+        <th>
+            @{ var excellence = ViewBag.Excellence;}
+            Excellence awards = @excellence
+
+        </th>
+        <th>
+            @{ var integrity = ViewBag.Integrity;}
+            Integrity awards = @integrity
+        </th>
+    <th>
+        @{ var stewardship = ViewBag.Stewardship;}
+        Stewardship awards = @stewardship
+    </th>
+    <th>
+        @{var innovate = ViewBag.Innovate; }
+        Innovate awards = @innovate
+    </th>
+
+    <th>
+        @{ var balance = ViewBag.Balance;}
+        Balance awards = @balance
+    </th>
+        <th>
+        </th>
+
+
+
+
+
+
+
+    </tr>
+
+</table>
+
+
+    @*//var total = ViewBag.total;*@
+    <!--var excellence = ViewBag.Excellence;
+    var integrity = ViewBag.Integrity;
+    var stewardship = ViewBag.Stewardship;
+    var innovate = ViewBag.Innovate;
+    var balance = ViewBag.Balance;
+}-->
+
+@*//<h2>Total recognitions received = @total</h2>*@
+<!--<h3>Excellence awards = @excellence</h3>
+<h3>Integrity awards = @integrity</h3>
+<h3>Stewardship awards = @stewardship</h3>
+<h3>Innovate awards = @innovate</h3>
+<h3>Balance awards = @balance</h3>-->
+
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
